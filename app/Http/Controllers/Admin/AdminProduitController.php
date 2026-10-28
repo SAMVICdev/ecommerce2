@@ -31,9 +31,13 @@ class AdminProduitController extends Controller
         $produit->prix = $request->prix;
         $produit->categorie_id = $request->categorie_id;
 
+        $request->validate([
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         // Stocker la photo si elle est fournie
         if ($request->hasFile('photo')) {
-            $path = $request->photo->store('produits');
+            $path = $request->photo->store('produits', 'public');
             $produit->photo = $path;
         }
 
@@ -69,7 +73,7 @@ class AdminProduitController extends Controller
                 Storage::delete($produit->photo);
             }
             // Stocker la nouvelle photo
-            $path = $request->photo->store('produits');
+            $path = $request->photo->store('produits', 'public');
             $produit->photo = $path;
         }
 

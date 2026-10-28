@@ -91,7 +91,7 @@
                 @if ($produit->photo)
                     <div class="current-image">
                         <p>Image actuelle :</p>
-                        <img src="{{ asset('storage/' . $produit->photo) }}" alt="{{ $produit->nom }}">
+                        <img src="{{ asset('/storage/' . $produit->photo) }}" alt="{{ $produit->nom }}">
                     </div>
                 @endif
             </div>

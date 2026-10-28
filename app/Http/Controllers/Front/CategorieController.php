@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use App\Models\Produit;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategorieController extends Controller
 {
@@ -16,8 +17,8 @@ class CategorieController extends Controller
 
     public function show($id)
     {
-        $categorie = Categorie::find($id);
-        $produits = $categorie->produits; // Récupère les produits associés à la catégorie
+        $categorie = Categorie::with('produits')->findOrFail($id);
+        $produits = $categorie->produits;
         return view('categories.show', compact('categorie', 'produits'));
     }
 }

@@ -88,7 +88,7 @@
             <strong>Image:</strong>
             @if ($produit->photo)
                 <div class="product-image">
-                    <img src="{{ asset('storage/' . $produit->photo) }}" alt="{{ $produit->nom }}">
+                    <img src="{{ asset('/storage/' . $produit->photo) }}" alt="{{ $produit->nom }}">
                 </div>
             @else
                 <span class="detail-value">Pas d'image</span>

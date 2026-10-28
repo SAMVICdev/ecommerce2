@@ -98,7 +98,7 @@
                     <td>{{ $produit->categorie->nom ?? 'N/A' }}</td>
                     <td>
                         @if ($produit->photo)
-                            <img src="{{ asset('storage/' . $produit->photo) }}" alt="{{ $produit->nom }}" width="50">
+                            <img src="{{ asset('/storage/' . $produit->photo) }}" alt="{{ $produit->nom }}" width="50">
                         @else
                             Pas d'image
                         @endif
@@ -125,6 +125,7 @@
 
         <div class="add-btn">
             <a href="{{ route('admin.produits.create') }}" class="btn btn-primary">Créer un nouveau produit</a>
+            <a href="{{ route('admin.categories.index') }}" class="btn btn-primary" style="margin-left: 0.5rem;">Gérer les catégories</a>
         </div>
     </div>
 </body>
