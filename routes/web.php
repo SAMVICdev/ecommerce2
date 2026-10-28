@@ -4,11 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\ProduitController;
 use App\Http\Controllers\Front\CategorieController;
 use App\Http\Controllers\Admin\AdminProduitController;
+use App\Http\Controllers\Admin\AdminCategorieController;
+use App\Http\Controllers\Front\AuthController;
 
 
 // Redirige la racine directement vers votre contrôleur de produits
 Route::get('/', [ProduitController::class, 'index'])->name('produits.index');
-
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register', [AuthController::class, 'show_register_form'])->name('register');
 Route::get('/produits/{id}', [ProduitController::class, 'show'])->name('produits.show');
 
 Route::get('/categories/{id}', [CategorieController::class, 'show'])->name('categories.show');
